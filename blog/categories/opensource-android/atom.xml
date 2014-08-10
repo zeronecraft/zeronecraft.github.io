@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: opensource,android | Zero One Craft]]></title>
+  <link href="http://zeronecraft.github.io/blog/categories/opensource-android/atom.xml" rel="self"/>
+  <link href="http://zeronecraft.github.io/"/>
+  <updated>2014-08-10T01:23:22-07:00</updated>
+  <id>http://zeronecraft.github.io/</id>
+  <author>
+    <name><![CDATA[Chang Cheng]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Actionbar-PullToRefresh]]></title>
+    <link href="http://zeronecraft.github.io/blog/2014/08/10/one-open-source-project-a-day/"/>
+    <updated>2014-08-10T00:45:54-07:00</updated>
+    <id>http://zeronecraft.github.io/blog/2014/08/10/one-open-source-project-a-day</id>
+    <content type="html"><![CDATA[<p>Starting reading opensource project.</p>
+
+<p>Let me call it A Opensource Project a Day. :)</p>
+
+<p>Mostly focus on Android Open source project.</p>
+
+<p>Start light and today talk about ActionBar-pullToRefresh.</p>
+
+<ul>
+<li>url:<a href="https://github.com/chrisbanes/ActionBar-PullToRefresh">https://github.com/chrisbanes/ActionBar-PullToRefresh</a></li>
+</ul>
+
+
+<p>It try to mimic the gmail pull to refresh view. It&rsquo;s been widely used and worst take a look.</p>
+
+<p>Hightlight:</p>
+
+<ul>
+<li>it actually replace all the child view and replace with it self.</li>
+</ul>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertLayoutIntoViewGroup</span><span class="o">(</span><span class="n">ViewGroup</span> <span class="n">viewGroup</span><span class="o">,&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>            <span class="n">PullToRefreshLayout</span> <span class="n">pullToRefreshLayout</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// Move all children to PullToRefreshLayout. This code looks a bit silly but the child</span>
+</span><span class='line'>        <span class="c1">// indices change every time we remove a View (so we can&#39;t just iterate through)</span>
+</span><span class='line'>        <span class="n">View</span> <span class="n">child</span> <span class="o">=</span> <span class="n">viewGroup</span><span class="o">.</span><span class="na">getChildAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">while</span> <span class="o">(</span><span class="n">child</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">viewGroup</span><span class="o">.</span><span class="na">removeViewAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">pullToRefreshLayout</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">child</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">child</span> <span class="o">=</span> <span class="n">viewGroup</span><span class="o">.</span><span class="na">getChildAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">viewGroup</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">pullToRefreshLayout</span><span class="o">,</span> <span class="n">ViewGroup</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">,</span>
+</span><span class='line'>                <span class="n">ViewGroup</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ul>
+<li><p>use a SetupWizard pattern(like builder pattern, make the api looks good)</p></li>
+<li><p>interesting</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
